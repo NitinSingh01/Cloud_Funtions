@@ -34,6 +34,7 @@ def publish(request):
         publish_future = publisher.publish(topic_path, data=message_bytes)
         publish_future.result()  # Verify the publish succeeded
         print('Message published.')
+        return "Event Published"
     except Exception as e:
         print(e)
         return (e, 500)
