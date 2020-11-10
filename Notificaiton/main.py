@@ -30,7 +30,6 @@ def send_tls(event, context):
     ssl_context.check_hostname = False
     message = build_message(request=request)
     server = smtplib.SMTP_SSL(s.get("SMTP_SERVER"), s.get("SMTP_PORT"))
-    server.ehlo()
     server.login(user=s.get("SENDER_EMAIL"),password=s.get("SENDER_PASSWORD"))
     server.sendmail(from_addr=message.get('From'), to_addrs=message.get('To'), msg=message.as_string())
     server.close()
